@@ -46,6 +46,7 @@ cartodb.createLayer(map, 'http://team.cartodb.com/api/v2/viz/f8123be4-a409-11e4-
 
 
         var SparksLayer= L.CanvasLayer.extend({
+          options: {zIndex: 1},
           render: function() {
                     var canvas = this.getCanvas();
                     var ctx = canvas.getContext('2d');
