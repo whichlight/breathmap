@@ -46,7 +46,7 @@ function createProton(image) {
   emitter.addBehaviour(new Proton.Color('#FF0000', '#FF9B00'));
 //  attractionForce = new Proton.Attraction(mouseObj, 10, 200);
 //  emitter.addBehaviour(attractionForce);
-  emitter.addBehaviour(new Proton.Scale(Proton.getSpan(0.1, 0.2), Proton.getSpan(0.2, 0.5)));
+  // emitter.addBehaviour(new Proton.Scale(Proton.getSpan(0.1, 0.2), Proton.getSpan(0.2, 0.5)));
   emitter.addBehaviour(new Proton.Alpha(1,1));
   emitter.emit();
   proton.addEmitter(emitter);
