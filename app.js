@@ -7,24 +7,6 @@ var map = new L.Map('map', {
 
 var global_data = 0;
 
-function iterationL(data, em){
-    console.log(map.getPixelOrigin())
-    var lastx = 0;
-    setInterval(function(){
-        var o = map.latLngToLayerPoint(new L.LatLng(data.rows[global_data].y, data.rows[global_data].x));
-        if (lastx != o.x){
-            em.x = o.x- canvas.width/2;
-            em.y = o.y- canvas.height/2;
-            lastx = o.x
-        }
-        global_data++;
-        if(global_data==data.rows.length){
-            global_data=0;
-        }
-    }, 5)
-}
-
-var sql = cartodb.SQL({ user: 'andrew' });
 
 cartodb.createLayer(map, 'http://team.cartodb.com/api/v2/viz/f8123be4-a409-11e4-86d6-0e018d66dc29/viz.json')
   .done(function(layer) {
@@ -83,11 +65,6 @@ cartodb.createLayer(map, 'http://team.cartodb.com/api/v2/viz/f8123be4-a409-11e4-
         }
 
     }, function (){console.warn("Error getting audio stream from getUserMedia")});
-
-
-    sql.execute("select cartodb_id, ST_X(the_geom) x, ST_Y(the_geom) y from ansible_location_master ORDER BY last_seen ASC").done(function(data) {
-        iterationL(data,emitter.p);
-    });
 
 
 })

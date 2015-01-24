@@ -9,6 +9,21 @@ var attractionForce;
 //All of the settings are in the createProton function, with the initializers
 //the initializers can be reset too
 
+function iterationL(data){
+    var lastx = 0;
+    setInterval(function(){
+        var o = map.latLngToLayerPoint(new L.LatLng(data.rows[global_data].y, data.rows[global_data].x));
+        if (lastx != o.x){
+            emitter.p.x = o.x- canvas.width/2;
+            emitter.p.y = o.y- canvas.height/2;
+            lastx = o.x;
+        }
+        global_data++;
+        if(global_data==data.rows.length){
+            global_data=0;
+        }
+    }, 5)
+}
 
 function startSparks(_canvas) {
 //  canvas = document.getElementById("testCanvas");
@@ -20,6 +35,13 @@ function startSparks(_canvas) {
     x : canvas.width / 2,
     y : canvas.height / 2
   };
+
+  var sql = cartodb.SQL({ user: 'andrew' });
+
+  sql.execute("select cartodb_id, ST_X(the_geom) x, ST_Y(the_geom) y from ansible_location_master ORDER BY last_seen ASC").done(function(data) {
+      iterationL(data);
+  });
+
 }
 
 
