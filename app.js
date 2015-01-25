@@ -9,7 +9,7 @@ var global_data = 0;
 var status = 0;
 
 var rendered = 0;
-
+var average = 0;
 
 cartodb.createLayer(map, 'http://team.cartodb.com/api/v2/viz/f8123be4-a409-11e4-86d6-0e018d66dc29/viz.json')
   .done(function(layer) {
@@ -56,12 +56,12 @@ cartodb.createLayer(map, 'http://team.cartodb.com/api/v2/viz/f8123be4-a409-11e4-
                 values += array[i];
             }
 
-            var average = values / length;
+            average = values / length;
 
-            var thresh = 40;
+            var thresh = 60;
 
             if(status==1){
-                    console.log('noise!')
+                console.log('noise!')
             }
 
             if(status == 0){
@@ -70,6 +70,7 @@ cartodb.createLayer(map, 'http://team.cartodb.com/api/v2/viz/f8123be4-a409-11e4-
                     emitter.rate.numPan.a = 20;
                     emitter.rate.numPan.b = 40;
                      emitter.initializes[4].rPan.b = 1;
+                     moveForward();
                     // emitter.initializes[3].lifePan.b = 3
                 }
             } else {

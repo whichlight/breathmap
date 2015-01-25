@@ -8,21 +8,27 @@ var attractionForce;
 
 //All of the settings are in the createProton function, with the initializers
 //the initializers can be reset too
-
+var global_rows;
+var lastx = 0;
+function moveForward() {
+    var o = map.latLngToLayerPoint(new L.LatLng(global_rows.rows[global_data].y, global_rows.rows[global_data].x));
+    if (lastx != o.x){
+        emitter.p.x = o.x- canvas.width/2;
+        emitter.p.y = o.y- canvas.height/2;
+        lastx = o.x;
+    }
+    global_data++;
+    if(global_data==global_rows.rows.length){
+        global_data=0;
+    }
+    var f = 60 - Math.floor(Math.min(average, 30));
+    if (f < 40){
+      setTimeout(moveForward, f);
+    }
+}
 function iterationL(data){
-    var lastx = 0;
-    setInterval(function(){
-        var o = map.latLngToLayerPoint(new L.LatLng(data.rows[global_data].y, data.rows[global_data].x));
-        if (lastx != o.x){
-            emitter.p.x = o.x- canvas.width/2;
-            emitter.p.y = o.y- canvas.height/2;
-            lastx = o.x;
-        }
-        global_data++;
-        if(global_data==data.rows.length){
-            global_data=0;
-        }
-    }, 5)
+    global_rows = data;
+    setTimeout(moveForward, 25);
 }
 
 function startSparks(_canvas) {
