@@ -10,13 +10,12 @@ html, body, #map { height: 100%; padding: 0; margin: 0;
 
 #info{
   position: absolute;
+  top:10px;
   left: 10px;
-  top: 10px;
   z-index: 2;
-  padding: 16px 24px;
   color:#fff;
-  font-size:20px;
-  font-family: Lucinda;
+  font-size:14px;
+  font-family: Rock Salt;
 }
 
 #info{
@@ -24,4 +23,12 @@ html, body, #map { height: 100%; padding: 0; margin: 0;
 
 #info a{
  color:white;
+}
+
+#logo{
+  width:200px;
+}
+
+#info p{
+  line-height:1.4;
 }
