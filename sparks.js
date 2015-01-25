@@ -11,6 +11,14 @@ var attractionForce;
 var global_rows;
 var lastx = 0;
 function moveForward() {
+    if (global_rows.rows[global_data].is_stop == true){
+      if (global_rows.rows[global_data].name == "phuket"){
+        var inst = $("[data-remodal-id=phuket]").remodal();
+        inst.open();
+      }
+        // var inst = $("[data-remodal-id="+global_rows.rows[global_data].name+"]").remodal();
+        // inst.open();
+    }
     var o = map.latLngToLayerPoint(new L.LatLng(global_rows.rows[global_data].y, global_rows.rows[global_data].x));
     if (lastx != o.x){
         emitter.p.x = o.x- canvas.width/2;
@@ -44,7 +52,7 @@ function startSparks(_canvas) {
 
   var sql = cartodb.SQL({ user: 'andrew' });
 
-  sql.execute("select cartodb_id, ST_X(the_geom) x, ST_Y(the_geom) y, is_stop from breath_trajectoryx ORDER BY cartodb_id ASC").done(function(data) {
+  sql.execute("select cartodb_id, ST_X(the_geom) x, ST_Y(the_geom) y, is_stop, name from breath_trajectoryx ORDER BY cartodb_id ASC").done(function(data) {
       iterationL(data);
   });
 
