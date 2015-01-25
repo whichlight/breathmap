@@ -25,7 +25,7 @@ function moveForward() {
       }
       var f = 60 - Math.floor(Math.min(average, 30));
       if (f < 40){
-        setTimeout(moveForward, 2);
+        setTimeout(moveForward, f);
       }
     }
     if (global_rows.rows[global_data].is_stop == true){
