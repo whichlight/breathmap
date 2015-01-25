@@ -59,17 +59,19 @@ function loadImage() {
 function createProton(image) {
   proton = new Proton;
   emitter = new Proton.Emitter();
-  emitter.rate = new Proton.Rate(new Proton.Span(1, 40), 0.01);
+  emitter.rate = new Proton.Rate(new Proton.Span(1, 20), 0.01);
   emitter.addInitialize(new Proton.Mass(1));
   emitter.addInitialize(new Proton.ImageTarget(image));
   emitter.addInitialize(new Proton.Position(new Proton.PointZone(mouseObj.x, mouseObj.y)));
-  emitter.addInitialize(new Proton.Life(0.1, 0.5));
-  emitter.addInitialize(new Proton.V(new Proton.Span(0.2, 0.5), new Proton.Span(0, 360), 'polar'));
+  emitter.addInitialize(new Proton.Life(0.1, 1));
+   emitter.addInitialize(new Proton.V(new Proton.Span(0, 0.2), new Proton.Span(0, 360), 'polar'));
   emitter.addBehaviour(new Proton.Color('#FF0000', '#FF9B00'));
 //  attractionForce = new Proton.Attraction(mouseObj, 10, 200);
 //  emitter.addBehaviour(attractionForce);
-  // emitter.addBehaviour(new Proton.Scale(Proton.getSpan(0.1, 0.2), Proton.getSpan(0.2, 0.5)));
-  emitter.addBehaviour(new Proton.Alpha(1,1));
+  velocity = new Proton.V(new Proton.Span(0, 0.2), new Proton.Span(0, 360), 'polar');
+//  emitter.addBehaviour(velocity);
+   emitter.addBehaviour(new Proton.Scale(Proton.getSpan(0.1, 0.2), Proton.getSpan(0.2, 0.3)));
+  emitter.addBehaviour(new Proton.Alpha(0.5,1));
   emitter.emit();
   proton.addEmitter(emitter);
 
