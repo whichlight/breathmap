@@ -90,4 +90,13 @@ cartodb.createLayer(map, 'http://team.cartodb.com/api/v2/viz/f8123be4-a409-11e4-
 })
 .addTo(map);
 
+$("#team").click(function(){
+    var inst = $("#teampop").remodal();
+    inst.open();
+});
 
+
+$("#about").click(function(){
+    var inst = $("#aboutpop").remodal();
+    inst.open();
+});

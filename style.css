@@ -23,6 +23,7 @@ html, body, #map { height: 100%; padding: 0; margin: 0;
 
 #info a{
  color:white;
+ text-decoration:none;
 }
 
 #logo{
@@ -31,4 +32,42 @@ html, body, #map { height: 100%; padding: 0; margin: 0;
 
 #info p{
   line-height:1.4;
+}
+
+.team img{
+  width: 150px;
+}
+
+.member{
+  width:200px;
+  display:inline;
+  float:left;
+}
+
+.caption{
+  text-align:center;
+}
+
+.caption a{
+
+  text-decoration:none;
+  color: #555;
+  font-family: Rock Salt;
+}
+
+#team{
+ margin:10px;
+}
+
+.about-info{
+  text-align:left;
+}
+
+.about-info {
+    width:100%;
+}
+
+#about-img {
+  width:60%;
+  margin: 0px auto;
 }
