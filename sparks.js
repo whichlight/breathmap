@@ -38,7 +38,7 @@ function startSparks(_canvas) {
 
   var sql = cartodb.SQL({ user: 'andrew' });
 
-  sql.execute("select cartodb_id, ST_X(the_geom) x, ST_Y(the_geom) y from ansible_location_master ORDER BY last_seen ASC").done(function(data) {
+  sql.execute("select cartodb_id, ST_X(the_geom) x, ST_Y(the_geom) y from breath_trajectoryx ORDER BY cartodb_id ASC").done(function(data) {
       iterationL(data);
   });
 
