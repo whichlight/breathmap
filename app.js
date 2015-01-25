@@ -22,7 +22,6 @@ cartodb.createLayer(map, 'http://team.cartodb.com/api/v2/viz/f8123be4-a409-11e4-
                 //starts particle system from sparks.js
                 if(rendered == 0){
                   rendered = 1;
-                    console.log('yay');
                   startSparks(canvas);
                 }
                 //emitter.x -> xpos of emitter
