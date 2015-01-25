@@ -67,12 +67,18 @@ cartodb.createLayer(map, 'http://team.cartodb.com/api/v2/viz/f8123be4-a409-11e4-
             if(status == 0){
                 if (average >thresh){
                     status=1;
+                    emitter.rate.numPan.a = 20;
+                    emitter.rate.numPan.b = 40;
                      emitter.initializes[4].rPan.b = 1;
+                    // emitter.initializes[3].lifePan.b = 3
                 }
             } else {
                 if (average <= thresh){
                     status=0;
+                    emitter.rate.numPan.a = 1;
+                    emitter.rate.numPan.b = 10;
                      emitter.initializes[4].rPan.b = 0.2;
+                    // emitter.initializes[3].lifePan.b = 1;
                 }
             }
         }

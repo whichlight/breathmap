@@ -65,7 +65,7 @@ function createProton(image) {
   emitter.addInitialize(new Proton.Position(new Proton.PointZone(mouseObj.x, mouseObj.y)));
   emitter.addInitialize(new Proton.Life(0.1, 1));
    emitter.addInitialize(new Proton.V(new Proton.Span(0, 0.2), new Proton.Span(0, 360), 'polar'));
-  emitter.addBehaviour(new Proton.Color('#FF0000', '#FF9B00'));
+  emitter.addBehaviour(new Proton.Color('#FFFFFF', '#FF9B00'));
 //  attractionForce = new Proton.Attraction(mouseObj, 10, 200);
 //  emitter.addBehaviour(attractionForce);
   velocity = new Proton.V(new Proton.Span(0, 0.2), new Proton.Span(0, 360), 'polar');
